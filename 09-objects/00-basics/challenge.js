@@ -61,7 +61,7 @@ var priceList =
 
   if (priceList.hasOwnProperty(item))
   {
-    if (money >= priceList[item]) //Remember to call the existing variable instead of naming and creating a new property.
+    if (money >= priceList[item])
     {
       console.log("true");
       return true;
