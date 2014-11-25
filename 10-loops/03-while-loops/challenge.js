@@ -1,36 +1,23 @@
 
-// I am still having trouble with the steam function...
-
 //module.exports.stream = undefined;
-var conditionalFn = function() 
-{ 
-  var counter = 10;
-    for (counter; counter < 10; counter --)
-      {
-        if (counter < 7)
-          {
-            return false;
-          }
-        else 
-          {
-            return true; // Should return "true" 3 times.
-          }
-      }
-};
-
-var actionFn = function() 
-{ 
-    console.log("Hello!"); // Won't print in the console without being called.
-};
-
-var stream = function(conditionalFn, actionFn) //Should be: function(true,"Hello") 3 times...
+var stream = function(conditionalFn, actionFn)
 {
-  while (conditionalFn != false) 
+  while (conditionalFn() != false) 
     {
-       actionFn(); //This is not printing, and I don't understand why.
+       actionFn();
     }
 };
 
+conditionalFn = function() { return false; };
+actionFn = function() { console.log("Hello!"); };
+stream(conditionalFn, actionFn); // Prints nothing.
+
+counter = 10;
+conditionalFn = function() { 
+  counter--;
+  return counter >= 0; 
+};
+stream(conditionalFn, actionFn); // should print "Hello" 10 times.
 
 //module.exports.sumNumbers = undefined;
 
